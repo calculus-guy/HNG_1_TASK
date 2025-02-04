@@ -36,11 +36,23 @@ const isPerfect = (num) => {
     return sum === num;
 };
 
+//sum of digits
+function digit_sum(n) {
+    const digits = String(Math.abs(n))
+    if (n < 0) {
+        const ans = digits
+        .split("")
+        .reduce((acc, digits) => acc + Number(digits), 0)
+        return ans * -1    
+}
+    return digits
+    .split("")
+    .reduce((acc, digits) => acc + Number(digits), 0)}
+
 // So this is the endpoint i will input in the url if i want to classify the number
 app.get("/api/classify-number", async (req, res) => {
     const { number } = req.query; // collect the number from the url
 
-    // Validate input
     if (!number || isNaN(number)) {
         return res.status(400).json({ number, error: true });
     }
@@ -59,12 +71,12 @@ app.get("/api/classify-number", async (req, res) => {
         funFact = "Fun fact unavailable.";
     }
 
-    res.json({
+    res.status(200).json({
         number: num,
         is_prime: isPrime(num),
         is_perfect: isPerfect(num),
         properties,
-        digit_sum: num.toString().split("").reduce((a, b) => a + parseInt(b), 0),
+        digit_sum: digit_sum(num),
         fun_fact: funFact,
     });
 });
