@@ -1,5 +1,8 @@
 # Public API for HNG Stage 1 Task
 
+Fun fact API: http://numbersapi.com/#42
+https://en.wikipedia.org/wiki/Parity_(mathematics)
+
 ## Project Overview
 
 This is a **Node.js** API that classifies numbers based on their mathematical properties and provides a fun fact about them. The **API** supports the following features:
